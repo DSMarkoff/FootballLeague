@@ -5,12 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimpleInjector" Version="5.4.0" />
+    <Folder Include="Queries\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\FootballLeague.Abstraction\FootballLeague.Abstraction.csproj" />
-    <ProjectReference Include="..\FootballLeague.Services\FootballLeague.Services.csproj" />
+    <ProjectReference Include="..\FootballLeague.Data\FootballLeague.Data.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,37 +1,51 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FootballLeague.Abstraction.Handlers;
+using FootballLeague.Models.Team.Create;
+using FootballLeague.Services.Commands.Create;
+using FootballLeague.Services.Results.Create;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FootballLeague.Controllers
 {
     public class TeamsController : ApiControllerBase
     {
-        public TeamsController()
-        {
+        private readonly ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler;
 
+        public TeamsController(
+            ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler)
+        {
+            this.createTeamHandler = createTeamHandler;
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create([FromBody]CreateTeamInputModel model)
         {
+            var command = new CreateTeamCommand(model.Name);
 
+            var result = await createTeamHandler.Handle(command);
+
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status201Created);
+
+            return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
+        //[HttpGet]
+        //public async Task<IActionResult> Get()
+        //{
 
-        }
+        //}
 
-        [HttpPut]
-        public async Task<IActionResult> Update()
-        {
+        //[HttpPut]
+        //public async Task<IActionResult> Update()
+        //{
 
-        }
+        //}
 
-        [HttpDelete]
-        public async Task<IActionResult> Remove()
-        {
+        //[HttpDelete]
+        //public async Task<IActionResult> Remove()
+        //{
 
-        }
+        //}
     }
 }

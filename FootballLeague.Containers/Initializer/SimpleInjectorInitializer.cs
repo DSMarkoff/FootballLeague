@@ -1,4 +1,5 @@
 ﻿using FootballLeague.Containers.Abstraction;
+using FootballLeague.Containers.Packages;
 using SimpleInjector;
 
 namespace FootballLeague.Containers.Initializer
@@ -9,7 +10,7 @@ namespace FootballLeague.Containers.Initializer
         {
             var packages = new IPackage[]
             {
-
+                new TeamsPackage()
             };
 
             foreach (var package in packages)

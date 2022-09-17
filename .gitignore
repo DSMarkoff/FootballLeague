@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# Development appSettings
+appsettings.Development.json
+
+# Logging txt file 
+log.txt
