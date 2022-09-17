@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague", "FootballLeague\FootballLeague.csproj", "{51E6082B-F89C-4148-B887-F56B60E72424}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague", "FootballLeague\FootballLeague.csproj", "{51E6082B-F89C-4148-B887-F56B60E72424}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Containers", "FootballLeague.Containers\FootballLeague.Containers.csproj", "{18195E85-3FCF-46B2-B22E-4B454B801452}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Containers", "FootballLeague.Containers\FootballLeague.Containers.csproj", "{18195E85-3FCF-46B2-B22E-4B454B801452}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Data", "FootballLeague.Data\FootballLeague.Data.csproj", "{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Data", "FootballLeague.Data\FootballLeague.Data.csproj", "{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Abstraction", "FootballLeague.Abstraction\FootballLeague.Abstraction.csproj", "{41AC521D-E898-4D4C-8BEF-F3F689367BC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41AC521D-E898-4D4C-8BEF-F3F689367BC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41AC521D-E898-4D4C-8BEF-F3F689367BC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41AC521D-E898-4D4C-8BEF-F3F689367BC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41AC521D-E898-4D4C-8BEF-F3F689367BC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
