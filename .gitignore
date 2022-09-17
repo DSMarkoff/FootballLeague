@@ -401,4 +401,4 @@ FodyWeavers.xsd
 appsettings.Development.json
 
 # Logging txt file 
-log.txt
+Logs.txt
