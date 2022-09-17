@@ -1,6 +1,6 @@
 ﻿using FootballLeague.Abstraction.Results;
 
-namespace FootballLeague.Services.Results.Create
+namespace FootballLeague.Services.Results.Team.Create
 {
     public class CreateTeamResult : IResult
     {

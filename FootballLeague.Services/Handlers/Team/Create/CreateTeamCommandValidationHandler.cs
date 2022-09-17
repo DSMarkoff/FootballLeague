@@ -1,20 +1,20 @@
 ﻿using FootballLeague.Abstraction.Handlers;
 using FootballLeague.Data;
-using FootballLeague.Services.Commands.Create;
-using FootballLeague.Services.Results.Create;
+using FootballLeague.Services.Commands.Team.Create;
+using FootballLeague.Services.Results.Team.Create;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FootballLeague.Services.Handlers.Create
+namespace FootballLeague.Services.Handlers.Team.Create
 {
-    public class CreateCommandValidationHandler : ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult>
+    public class CreateTeamCommandValidationHandler : ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult>
     {
         private const string NAME_ALREADY_EXISTS = "A team with such a name already exists.";
 
         private readonly ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> decoratee;
         private readonly AppDbContext dbContext;
 
-        public CreateCommandValidationHandler(
+        public CreateTeamCommandValidationHandler(
             ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> decoratee,
             AppDbContext dbContext)
         {

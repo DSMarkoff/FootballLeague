@@ -1,6 +1,6 @@
 ﻿using FootballLeague.Abstraction.Commands;
 
-namespace FootballLeague.Services.Commands.Create
+namespace FootballLeague.Services.Commands.Team.Create
 {
     public class CreateTeamCommand : ICommand
     {

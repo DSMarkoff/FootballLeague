@@ -1,11 +1,11 @@
 ﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Services.Commands.Create;
+using FootballLeague.Services.Commands.Team.Create;
 using FootballLeague.Services.Logging;
-using FootballLeague.Services.Results.Create;
+using FootballLeague.Services.Results.Team.Create;
 using System;
 using System.Threading.Tasks;
 
-namespace FootballLeague.Services.Handlers.Create
+namespace FootballLeague.Services.Handlers.Team.Create
 {
     public class CreateTeamErrorHandler : ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult>
     {
