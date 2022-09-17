@@ -1,5 +1,5 @@
 ﻿using FootballLeague.Containers.Abstraction;
-using FootballLeague.Containers.Packages;
+using FootballLeague.Containers.SimpleInjectorPackages;
 using SimpleInjector;
 
 namespace FootballLeague.Containers.Initializer
