@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague", "FootballL
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Containers", "FootballLeague.Containers\FootballLeague.Containers.csproj", "{18195E85-3FCF-46B2-B22E-4B454B801452}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Data", "FootballLeague.Data\FootballLeague.Data.csproj", "{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{18195E85-3FCF-46B2-B22E-4B454B801452}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18195E85-3FCF-46B2-B22E-4B454B801452}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18195E85-3FCF-46B2-B22E-4B454B801452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
