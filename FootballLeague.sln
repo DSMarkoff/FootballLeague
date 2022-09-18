@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Containers",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Data", "FootballLeague.Data\FootballLeague.Data.csproj", "{AA9D9462-9517-48EC-BFE4-6ABCC4BE51C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Abstraction", "FootballLeague.Abstraction\FootballLeague.Abstraction.csproj", "{41AC521D-E898-4D4C-8BEF-F3F689367BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Abstraction", "FootballLeague.Abstraction\FootballLeague.Abstraction.csproj", "{41AC521D-E898-4D4C-8BEF-F3F689367BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Services", "FootballLeague.Services\FootballLeague.Services.csproj", "{C1C4A39D-8483-4104-B5FB-2CE995447434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Services", "FootballLeague.Services\FootballLeague.Services.csproj", "{C1C4A39D-8483-4104-B5FB-2CE995447434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Models", "FootballLeague.Models\FootballLeague.Models.csproj", "{0C91CF72-77D0-4C06-8EFF-E598140F7FCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FootballLeague.Models", "FootballLeague.Models\FootballLeague.Models.csproj", "{0C91CF72-77D0-4C06-8EFF-E598140F7FCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FootballLeague.Common", "FootballLeague.Common\FootballLeague.Common.csproj", "{2408CCBE-22BB-43B1-AC92-C5B1B7980D5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0C91CF72-77D0-4C06-8EFF-E598140F7FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C91CF72-77D0-4C06-8EFF-E598140F7FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C91CF72-77D0-4C06-8EFF-E598140F7FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2408CCBE-22BB-43B1-AC92-C5B1B7980D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2408CCBE-22BB-43B1-AC92-C5B1B7980D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2408CCBE-22BB-43B1-AC92-C5B1B7980D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2408CCBE-22BB-43B1-AC92-C5B1B7980D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 ﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Services.Logging;
+using FootballLeague.Common.Logging;
 using FootballLeague.Services.Queries.Team.Get;
 using FootballLeague.Services.Results.Team.Get;
 using System;
@@ -26,7 +26,7 @@ namespace FootballLeague.Services.Handlers.Team.Get
             }
             catch (Exception ex)
             {
-                Logger.Log($"{DateTime.UtcNow}, {ex}");
+                Logger.Log($"C/Q: {nameof(TeamByIdQuery)}, AT {DateTime.UtcNow}, {ex}");
 
                 return new GetTeamByIdResult(GENERAL_ERROR);
             }
