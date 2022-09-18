@@ -1,7 +1,10 @@
-﻿namespace FootballLeague.Data.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FootballLeague.Data.Models
 {
     public class Team : BaseEntity
     {
+        [Required]
         public string Name { get; set; }
 
         public int Won { get; set; }

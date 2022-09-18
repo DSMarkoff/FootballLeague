@@ -36,7 +36,14 @@ namespace FootballLeague.Controllers
             this.deleteTeamHandler = deleteTeamHandler;
         }
 
+        /// <summary>
+        /// Creates a Team.
+        /// </summary>
+        /// <response code="201">On success</response>
+        /// <response code="400">On failure</response>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Create([FromBody]CreateTeamInputModel model)
         {
             var command = new CreateTeamCommand(model.Name);
@@ -48,7 +55,14 @@ namespace FootballLeague.Controllers
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Gets a Team.
+        /// </summary>
+        /// <response code="200">On success</response>
+        /// <response code="400">On failure</response>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Get([FromQuery]GetTeamInputModel model)
         {
             var query = new TeamByIdQuery(model.Id);
@@ -60,7 +74,14 @@ namespace FootballLeague.Controllers
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Updates a Team.
+        /// </summary>
+        /// <response code="204">On success</response>
+        /// <response code="400">On failure</response>
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Update([FromBody]UpdateTeamInputModel model)
         {
             var command = new UpdateTeamCommand(
@@ -79,7 +100,14 @@ namespace FootballLeague.Controllers
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
+        /// <summary>
+        /// Deletes a Team.
+        /// </summary>
+        /// <response code="204">On success</response>
+        /// <response code="400">On failure</response>
         [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> Remove([FromQuery] DeleteTeamInputModel model)
         {
             var command = new DeleteTeamCommand(model.Id);
