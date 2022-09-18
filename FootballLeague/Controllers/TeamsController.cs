@@ -1,11 +1,14 @@
 ﻿using FootballLeague.Abstraction.Handlers;
 using FootballLeague.Models.Team.Create;
+using FootballLeague.Models.Team.Delete;
 using FootballLeague.Models.Team.Get;
 using FootballLeague.Models.Team.Update;
 using FootballLeague.Services.Commands.Team.Create;
+using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Commands.Team.Update;
 using FootballLeague.Services.Queries.Team.Get;
 using FootballLeague.Services.Results.Team.Create;
+using FootballLeague.Services.Results.Team.Delete;
 using FootballLeague.Services.Results.Team.Get;
 using FootballLeague.Services.Results.Team.Update;
 using Microsoft.AspNetCore.Http;
@@ -19,15 +22,18 @@ namespace FootballLeague.Controllers
         private readonly IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult> getTeamHandler; 
         private readonly ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler;
         private readonly ICommandHandlerAsync<UpdateTeamCommand, UpdateTeamResult> updateTeamHandler;
+        private readonly ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult> deleteTeamHandler;
 
         public TeamsController(
             IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult> getTeamHandler,
             ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler,
-            ICommandHandlerAsync<UpdateTeamCommand, UpdateTeamResult> updateTeamHandler)
+            ICommandHandlerAsync<UpdateTeamCommand, UpdateTeamResult> updateTeamHandler,
+            ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult> deleteTeamHandler)
         {
             this.getTeamHandler = getTeamHandler;
             this.createTeamHandler = createTeamHandler;
             this.updateTeamHandler = updateTeamHandler;
+            this.deleteTeamHandler = deleteTeamHandler;
         }
 
         [HttpPost]
@@ -73,10 +79,16 @@ namespace FootballLeague.Controllers
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
-        //[HttpDelete]
-        //public async Task<IActionResult> Remove()
-        //{
+        [HttpDelete]
+        public async Task<IActionResult> Remove([FromQuery] DeleteTeamInputModel model)
+        {
+            var command = new DeleteTeamCommand(model.Id);
 
-        //}
+            var result = await deleteTeamHandler.Handle(command);
+
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status204NoContent);
+
+            return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
+        }
     }
 }

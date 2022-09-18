@@ -22,7 +22,6 @@ namespace FootballLeague.Services.Handlers.Team.Create
         {
             try
             {
-                throw new Exception();
                 return await decoratee.Handle(command);
             }
             catch (Exception ex)

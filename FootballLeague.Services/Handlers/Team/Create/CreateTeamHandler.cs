@@ -17,11 +17,13 @@ namespace FootballLeague.Services.Handlers.Team.Create
 
         public async Task<CreateTeamResult> Handle(CreateTeamCommand command)
         {
-            await dbContext.Teams.AddAsync(new Data.Models.Team
-                                            {
-                                                Name = command.Name
-                                            });
+            var team = 
+                new Data.Models.Team
+                {
+                    Name = command.Name
+                };
 
+            await dbContext.Teams.AddAsync(team);
             await dbContext.SaveChangesAsync();
 
             return new CreateTeamResult();

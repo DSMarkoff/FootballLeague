@@ -2,12 +2,15 @@
 using FootballLeague.Common.Validation;
 using FootballLeague.Containers.Abstraction;
 using FootballLeague.Services.Commands.Team.Create;
+using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Commands.Team.Update;
 using FootballLeague.Services.Handlers.Team.Create;
+using FootballLeague.Services.Handlers.Team.Delete;
 using FootballLeague.Services.Handlers.Team.Get;
 using FootballLeague.Services.Handlers.Team.Update;
 using FootballLeague.Services.Queries.Team.Get;
 using FootballLeague.Services.Results.Team.Create;
+using FootballLeague.Services.Results.Team.Delete;
 using FootballLeague.Services.Results.Team.Get;
 using FootballLeague.Services.Results.Team.Update;
 using SimpleInjector;
@@ -38,6 +41,12 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Collection.Append<IValidator<UpdateTeamCommand>, UpdateTeamCommandIdValidator>(Lifestyle.Scoped);
             container.Collection.Append<IValidator<UpdateTeamCommand>, UpdateTeamCommandNameValidator>(Lifestyle.Scoped);
             container.Collection.Append<IValidator<UpdateTeamCommand>, UpdateTeamCommandNumValuesValidator>(Lifestyle.Scoped);
+
+            //DELETE
+            container.Register<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamCommandValidationHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamErrorHandler>(Lifestyle.Scoped);
+
         }
 
         private void RegisterQueryHandlers(Container container)
