@@ -10,7 +10,8 @@ namespace FootballLeague.Containers.Initializer
         {
             var packages = new IPackage[]
             {
-                new TeamsPackage()
+                new TeamsPackage(),
+                new MatchesPackage()
             };
 
             foreach (var package in packages)
