@@ -1,4 +1,4 @@
-﻿using FootballLeague.Abstraction.Queries;
+﻿using FootballLeague.Contracts.Queries;
 
 namespace FootballLeague.Services.Queries.Team.Get
 {

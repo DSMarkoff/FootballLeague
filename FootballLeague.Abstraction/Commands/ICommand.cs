@@ -1,4 +1,4 @@
-﻿namespace FootballLeague.Abstraction.Commands
+﻿namespace FootballLeague.Contracts.Commands
 {
     public interface ICommand
     {

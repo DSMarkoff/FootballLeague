@@ -1,5 +1,5 @@
-﻿using FootballLeague.Abstraction.Enumerations;
-using FootballLeague.Abstraction.Handlers;
+﻿using FootballLeague.Contracts.Enumerations;
+using FootballLeague.Contracts.Handlers;
 using FootballLeague.Data;
 using FootballLeague.Services.Commands.Team.Update;
 using FootballLeague.Services.Results.Team.Update;

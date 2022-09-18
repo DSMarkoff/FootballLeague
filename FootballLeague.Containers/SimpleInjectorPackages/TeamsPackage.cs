@@ -1,6 +1,6 @@
-﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Common.Validation;
+﻿using FootballLeague.Common.Validation;
 using FootballLeague.Containers.Abstraction;
+using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Team.Create;
 using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Commands.Team.Update;

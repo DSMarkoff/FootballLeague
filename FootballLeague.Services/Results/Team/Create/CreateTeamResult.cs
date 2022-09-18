@@ -1,4 +1,4 @@
-﻿using FootballLeague.Abstraction.Results;
+﻿using FootballLeague.Contracts.Results;
 
 namespace FootballLeague.Services.Results.Team.Create
 {

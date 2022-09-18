@@ -1,7 +1,7 @@
-﻿using FootballLeague.Abstraction.Queries;
+﻿using FootballLeague.Contracts.Queries;
 using System.Threading.Tasks;
 
-namespace FootballLeague.Abstraction.Handlers
+namespace FootballLeague.Contracts.Handlers
 {
     public interface IQueryHandlerAsync<TQuery, TResult>
         where TQuery : IQuery

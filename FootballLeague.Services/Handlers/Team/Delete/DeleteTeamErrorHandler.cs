@@ -1,5 +1,5 @@
-﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Common.Logging;
+﻿using FootballLeague.Common.Logging;
+using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Results.Team.Delete;
 using System;

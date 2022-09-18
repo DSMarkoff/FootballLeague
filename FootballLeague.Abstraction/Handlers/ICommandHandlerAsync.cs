@@ -1,7 +1,7 @@
-﻿using FootballLeague.Abstraction.Commands;
+﻿using FootballLeague.Contracts.Commands;
 using System.Threading.Tasks;
 
-namespace FootballLeague.Abstraction.Handlers
+namespace FootballLeague.Contracts.Handlers
 {
     public interface ICommandHandlerAsync<TCommand, TResult>
         where TCommand : ICommand

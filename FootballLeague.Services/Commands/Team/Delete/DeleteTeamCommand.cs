@@ -1,4 +1,4 @@
-﻿using FootballLeague.Abstraction.Commands;
+﻿using FootballLeague.Contracts.Commands;
 
 namespace FootballLeague.Services.Commands.Team.Delete
 {

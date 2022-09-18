@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FootballLeague.Abstraction\FootballLeague.Abstraction.csproj" />
+    <ProjectReference Include="..\FootballLeague.Abstraction\FootballLeague.Contracts.csproj" />
     <ProjectReference Include="..\FootballLeague.Services\FootballLeague.Services.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,4 @@
-﻿namespace FootballLeague.Abstraction.Queries
+﻿namespace FootballLeague.Contracts.Queries
 {
     public interface IQuery
     {

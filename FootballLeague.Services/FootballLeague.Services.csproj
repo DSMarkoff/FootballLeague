@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FootballLeague.Abstraction\FootballLeague.Abstraction.csproj" />
+    <ProjectReference Include="..\FootballLeague.Abstraction\FootballLeague.Contracts.csproj" />
     <ProjectReference Include="..\FootballLeague.Common\FootballLeague.Common.csproj" />
     <ProjectReference Include="..\FootballLeague.Data\FootballLeague.Data.csproj" />
     <ProjectReference Include="..\FootballLeague.Models\FootballLeague.Models.csproj" />

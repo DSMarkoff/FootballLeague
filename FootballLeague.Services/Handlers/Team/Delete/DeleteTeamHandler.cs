@@ -1,4 +1,4 @@
-﻿using FootballLeague.Abstraction.Handlers;
+﻿using FootballLeague.Contracts.Handlers;
 using FootballLeague.Data;
 using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Results.Team.Delete;

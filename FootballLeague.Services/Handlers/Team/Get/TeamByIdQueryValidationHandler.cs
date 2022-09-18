@@ -1,4 +1,4 @@
-﻿using FootballLeague.Abstraction.Handlers;
+﻿using FootballLeague.Contracts.Handlers;
 using FootballLeague.Data;
 using FootballLeague.Services.Queries.Team.Get;
 using FootballLeague.Services.Results.Team.Get;

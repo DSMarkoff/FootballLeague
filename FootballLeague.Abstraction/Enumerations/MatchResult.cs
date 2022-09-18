@@ -1,4 +1,4 @@
-﻿namespace FootballLeague.Abstraction.Enumerations
+﻿namespace FootballLeague.Contracts.Enumerations
 {
     public enum MatchResult
     {

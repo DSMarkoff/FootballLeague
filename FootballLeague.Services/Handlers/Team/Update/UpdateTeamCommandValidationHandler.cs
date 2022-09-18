@@ -1,5 +1,5 @@
-﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Common.Validation;
+﻿using FootballLeague.Common.Validation;
+using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Team.Update;
 using FootballLeague.Services.Results.Team.Update;
 using System.Threading.Tasks;

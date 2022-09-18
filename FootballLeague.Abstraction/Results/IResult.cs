@@ -1,4 +1,4 @@
-﻿namespace FootballLeague.Abstraction.Results
+﻿namespace FootballLeague.Contracts.Results
 {
     public interface IResult
     {

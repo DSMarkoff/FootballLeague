@@ -1,5 +1,5 @@
-﻿using FootballLeague.Abstraction.Handlers;
-using FootballLeague.Common.Logging;
+﻿using FootballLeague.Common.Logging;
+using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Queries.Team.Get;
 using FootballLeague.Services.Results.Team.Get;
 using System;
