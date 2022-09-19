@@ -23,6 +23,7 @@ namespace FootballLeague.Services.Handlers.Team.All
             var teams = await dbContext.Teams
                         .Select(t => new GetTeamOutputModel
                             {
+                                Id = t.Id,
                                 Name = t.Name,
                                 Won = t.Won,
                                 Drawn = t.Drawn,

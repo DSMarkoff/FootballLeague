@@ -24,6 +24,7 @@ namespace FootballLeague.Services.Handlers.Team.Get
                         .Where(t => t.Id == query.Id)
                         .Select(t => new GetTeamOutputModel
                             {
+                                Id = t.Id,
                                 Name = t.Name,
                                 Won = t.Won,
                                 Drawn = t.Drawn,

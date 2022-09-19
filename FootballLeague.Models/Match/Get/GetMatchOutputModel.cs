@@ -4,6 +4,8 @@ namespace FootballLeague.Models.Match.Get
 {
     public class GetMatchOutputModel
     {
+        public int Id { get; set; }
+
         public int HomeTeamGoals { get; set; }
 
         public int AwayTeamGoals { get; set; }
@@ -15,5 +17,9 @@ namespace FootballLeague.Models.Match.Get
         public int HomeTeamId { get; set; }
 
         public int AwayTeamId { get; set; }
+
+        public string HomeTeamName { get; set; }
+
+        public string AwayTeamName { get; set; }
     }
 }

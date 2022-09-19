@@ -21,16 +21,38 @@ namespace FootballLeague.Services.Handlers.Match.Get
         public async Task<GetMatchByIdResult> Handle(MatchByIdQuery query)
         {
             var match = await dbContext.Matches
+                        .Join(dbContext.Teams,
+                            m => m.HomeTeamId,
+                            t => t.Id,
+                            (m, t) =>
+                                new 
+                                {
+                                    Id = m.Id,
+                                    HomeTeamGoals = m.HomeTeamGoals,
+                                    AwayTeamGoals = m.AwayTeamGoals,
+                                    Start = m.Start,
+                                    End = m.End,
+                                    HomeTeamId = m.HomeTeamId,
+                                    AwayTeamId = m.AwayTeamId,
+                                    HomeTeamName = t.Name
+                                })
+                                .Join(dbContext.Teams,
+                                    j => j.AwayTeamId,
+                                    t => t.Id,
+                                    (j, t) => 
+                                        new GetMatchOutputModel
+                                        {
+                                            Id = j.Id,
+                                            HomeTeamGoals = j.HomeTeamGoals,
+                                            AwayTeamGoals = j.AwayTeamGoals,
+                                            Start = j.Start,
+                                            End = j.End,
+                                            HomeTeamId = j.HomeTeamId,
+                                            AwayTeamId = j.AwayTeamId,
+                                            HomeTeamName = j.HomeTeamName,
+                                            AwayTeamName = t.Name
+                                        })
                         .Where(m => m.Id == query.Id)
-                        .Select(m => new GetMatchOutputModel
-                            {
-                                HomeTeamGoals = m.HomeTeamGoals,
-                                AwayTeamGoals = m.AwayTeamGoals,
-                                Start = m.Start,
-                                End = m.End,
-                                HomeTeamId = m.HomeTeamId,
-                                AwayTeamId = m.AwayTeamId
-                            })
                         .FirstOrDefaultAsync();
 
             return new GetMatchByIdResult(match);
