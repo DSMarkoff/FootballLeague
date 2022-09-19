@@ -1,13 +1,14 @@
 ﻿using FootballLeague.Contracts.Handlers;
 using FootballLeague.Models.Match.Create;
-//using FootballLeague.Models.Match.Delete;
+using FootballLeague.Models.Match.Delete;
 using FootballLeague.Models.Match.Get;
 using FootballLeague.Models.Match.Update;
 using FootballLeague.Services.Commands.Match.Create;
-//using FootballLeague.Services.Commands.Match.Delete;
+using FootballLeague.Services.Commands.Match.Delete;
 using FootballLeague.Services.Commands.Match.Update;
 using FootballLeague.Services.Queries.Match.Get;
 using FootballLeague.Services.Results.Match.Create;
+using FootballLeague.Services.Results.Match.Delete;
 using FootballLeague.Services.Results.Match.Get;
 using FootballLeague.Services.Results.Match.Update;
 using Microsoft.AspNetCore.Http;
@@ -21,18 +22,18 @@ namespace FootballLeague.Controllers
         private readonly IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult> getMatchHandler;
         private readonly ICommandHandlerAsync<CreateMatchCommand, CreateMatchResult> createMatchHandler;
         private readonly ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult> updateMatchHandler;
-        //private readonly ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler;
+        private readonly ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler;
 
         public MatchesController(
             IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult> getMatchHandler,
             ICommandHandlerAsync<CreateMatchCommand, CreateMatchResult> createMatchHandler,
-            ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult> updateMatchHandler)
-            //ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler)
+            ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult> updateMatchHandler,
+            ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler)
         {
             this.getMatchHandler = getMatchHandler;
             this.createMatchHandler = createMatchHandler;
             this.updateMatchHandler = updateMatchHandler;
-            //this.deleteMatchHandler = deleteMatchHandler;
+            this.deleteMatchHandler = deleteMatchHandler;
         }
 
         /// <summary>
@@ -96,23 +97,23 @@ namespace FootballLeague.Controllers
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
 
-        ///// <summary>
-        ///// Deletes a Match.
-        ///// </summary>
-        ///// <response code="204">On success</response>
-        ///// <response code="400">On failure</response>
-        //[HttpDelete]
-        //[ProducesResponseType(StatusCodes.Status204NoContent)]
-        //[ProducesResponseType(StatusCodes.Status400BadRequest)]
-        //public async Task<IActionResult> Remove([FromQuery] DeleteMatchInputModel model)
-        //{
-        //    var command = new DeleteMatchCommand(model.Id);
+        /// <summary>
+        /// Deletes a Match.
+        /// </summary>
+        /// <response code="204">On success</response>
+        /// <response code="400">On failure</response>
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> Remove([FromQuery] DeleteMatchInputModel model)
+        {
+            var command = new DeleteMatchCommand(model.Id);
 
-        //    var result = await deleteMatchHandler.Handle(command);
+            var result = await deleteMatchHandler.Handle(command);
 
-        //    if (result.IsSuccessful) return StatusCode(StatusCodes.Status204NoContent);
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status204NoContent);
 
-        //    return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
-        //}
+            return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
+        }
     }
 }

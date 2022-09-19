@@ -8,4 +8,10 @@ namespace FootballLeague.Contracts.Handlers
     {
         Task<TResult> Handle(TCommand command);
     }
+
+    public interface ICommandHandlerAsync<TCommand>
+        where TCommand : ICommand
+    {
+        Task Handle(TCommand command);
+    }
 }

@@ -2,10 +2,10 @@
 using FootballLeague.Containers.Abstraction;
 using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Match.Create;
-//using FootballLeague.Services.Commands.Match.Delete;
+using FootballLeague.Services.Commands.Match.Delete;
 using FootballLeague.Services.Commands.Match.Update;
 using FootballLeague.Services.Handlers.Match.Create;
-//using FootballLeague.Services.Handlers.Match.Delete;
+using FootballLeague.Services.Handlers.Match.Delete;
 using FootballLeague.Services.Handlers.Match.Get;
 using FootballLeague.Services.Handlers.Match.Update;
 using FootballLeague.Services.Queries.Match.Get;
@@ -39,6 +39,7 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
 
             //UPDATE
             container.Register<ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult>, UpdateMatchHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult>, UpdateTeamsStatsHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult>, UpdateMatchCommandValidationHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult>, UpdateMatchErrorHandler>(Lifestyle.Scoped);
 
@@ -47,10 +48,10 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Collection.Append<IValidator<UpdateMatchCommand>, UpdateMatchCommandEndValidator>(Lifestyle.Scoped);
             container.Collection.Append<IValidator<UpdateMatchCommand>, UpdateMatchCommandNumValuesValidator>(Lifestyle.Scoped);
 
-            //    //DELETE
-            //    container.Register<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchHandler>(Lifestyle.Scoped);
-            //    container.RegisterDecorator<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchCommandValidationHandler>(Lifestyle.Scoped);
-            //    container.RegisterDecorator<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchErrorHandler>(Lifestyle.Scoped);
+            //DELETE
+            container.Register<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchCommandValidationHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult>, DeleteMatchErrorHandler>(Lifestyle.Scoped);
 
         }
 

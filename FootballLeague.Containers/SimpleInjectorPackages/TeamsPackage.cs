@@ -23,6 +23,7 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
         {
             RegisterCommandHandlers(container);
             RegisterQueryHandlers(container);
+            RegisterCommonHandlers(container);
         }
 
         private void RegisterCommandHandlers(Container container)
@@ -46,7 +47,6 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Register<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamCommandValidationHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult>, DeleteTeamErrorHandler>(Lifestyle.Scoped);
-
         }
 
         private void RegisterQueryHandlers(Container container)
@@ -55,6 +55,11 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Register<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, GetTeamByIdHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, TeamByIdQueryValidationHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, GetTeamByIdErrorHandler>(Lifestyle.Scoped);
+        }
+
+        private void RegisterCommonHandlers(Container container)
+        {
+            container.Register<ICommandHandlerAsync<UpdateTeamStatsCommand>, UpdateTeamStatsCommandHandler>(Lifestyle.Scoped);
         }
     }
 }
