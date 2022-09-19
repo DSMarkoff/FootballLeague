@@ -6,7 +6,9 @@ using FootballLeague.Models.Team.Update;
 using FootballLeague.Services.Commands.Team.Create;
 using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Commands.Team.Update;
+using FootballLeague.Services.Queries.Team.All;
 using FootballLeague.Services.Queries.Team.Get;
+using FootballLeague.Services.Results.Team.All;
 using FootballLeague.Services.Results.Team.Create;
 using FootballLeague.Services.Results.Team.Delete;
 using FootballLeague.Services.Results.Team.Get;
@@ -19,18 +21,21 @@ namespace FootballLeague.Controllers
 {
     public class TeamsController : ApiControllerBase
     {
-        private readonly IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult> getTeamHandler; 
+        private readonly IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult> getTeamHandler;
+        private readonly IQueryHandlerAsync<GetAllTeamsQuery, GetAllTeamsResult> getAllTeamsHandler;
         private readonly ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler;
         private readonly ICommandHandlerAsync<UpdateTeamCommand, UpdateTeamResult> updateTeamHandler;
         private readonly ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult> deleteTeamHandler;
 
         public TeamsController(
             IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult> getTeamHandler,
+            IQueryHandlerAsync<GetAllTeamsQuery, GetAllTeamsResult> getAllTeamsHandler,
             ICommandHandlerAsync<CreateTeamCommand, CreateTeamResult> createTeamHandler,
             ICommandHandlerAsync<UpdateTeamCommand, UpdateTeamResult> updateTeamHandler,
             ICommandHandlerAsync<DeleteTeamCommand, DeleteTeamResult> deleteTeamHandler)
         {
             this.getTeamHandler = getTeamHandler;
+            this.getAllTeamsHandler = getAllTeamsHandler;
             this.createTeamHandler = createTeamHandler;
             this.updateTeamHandler = updateTeamHandler;
             this.deleteTeamHandler = deleteTeamHandler;
@@ -115,6 +120,25 @@ namespace FootballLeague.Controllers
             var result = await deleteTeamHandler.Handle(command);
 
             if (result.IsSuccessful) return StatusCode(StatusCodes.Status204NoContent);
+
+            return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// All Teams ranking.
+        /// </summary>
+        /// <response code="200">On success</response>
+        /// <response code="400">On failure</response>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> All()
+        {
+            var query = new GetAllTeamsQuery();
+
+            var result = await getAllTeamsHandler.Handle(query);
+
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status200OK, result.Teams);
 
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }

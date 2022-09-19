@@ -6,7 +6,9 @@ using FootballLeague.Models.Match.Update;
 using FootballLeague.Services.Commands.Match.Create;
 using FootballLeague.Services.Commands.Match.Delete;
 using FootballLeague.Services.Commands.Match.Update;
+using FootballLeague.Services.Queries.Match.All;
 using FootballLeague.Services.Queries.Match.Get;
+using FootballLeague.Services.Results.Match.All;
 using FootballLeague.Services.Results.Match.Create;
 using FootballLeague.Services.Results.Match.Delete;
 using FootballLeague.Services.Results.Match.Get;
@@ -20,17 +22,20 @@ namespace FootballLeague.Controllers
     public class MatchesController : ApiControllerBase
     {
         private readonly IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult> getMatchHandler;
+        private readonly IQueryHandlerAsync<GetAllMatchesQuery, GetAllMatchesResult> getAllMatchesHandler;
         private readonly ICommandHandlerAsync<CreateMatchCommand, CreateMatchResult> createMatchHandler;
         private readonly ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult> updateMatchHandler;
         private readonly ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler;
 
         public MatchesController(
             IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult> getMatchHandler,
+            IQueryHandlerAsync<GetAllMatchesQuery, GetAllMatchesResult> getAllMatchesHandler,
             ICommandHandlerAsync<CreateMatchCommand, CreateMatchResult> createMatchHandler,
             ICommandHandlerAsync<UpdateMatchCommand, UpdateMatchResult> updateMatchHandler,
             ICommandHandlerAsync<DeleteMatchCommand, DeleteMatchResult> deleteMatchHandler)
         {
             this.getMatchHandler = getMatchHandler;
+            this.getAllMatchesHandler = getAllMatchesHandler;
             this.createMatchHandler = createMatchHandler;
             this.updateMatchHandler = updateMatchHandler;
             this.deleteMatchHandler = deleteMatchHandler;
@@ -69,7 +74,7 @@ namespace FootballLeague.Controllers
 
             var result = await getMatchHandler.Handle(query);
 
-            if (result.IsSuccessful) return StatusCode(StatusCodes.Status200OK, result.Team);
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status200OK, result.Match);
 
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }
@@ -112,6 +117,25 @@ namespace FootballLeague.Controllers
             var result = await deleteMatchHandler.Handle(command);
 
             if (result.IsSuccessful) return StatusCode(StatusCodes.Status204NoContent);
+
+            return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
+        }
+
+        /// <summary>
+        /// All Matches.
+        /// </summary>
+        /// <response code="200">On success</response>
+        /// <response code="400">On failure</response>
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> All()
+        {
+            var query = new GetAllMatchesQuery();
+
+            var result = await getAllMatchesHandler.Handle(query);
+
+            if (result.IsSuccessful) return StatusCode(StatusCodes.Status200OK, result.Matches);
 
             return StatusCode(StatusCodes.Status400BadRequest, result.ErrorMessage);
         }

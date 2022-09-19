@@ -1,27 +1,26 @@
 ﻿using FootballLeague.Contracts.Handlers;
 using FootballLeague.Data;
 using FootballLeague.Models.Match.Get;
-using FootballLeague.Services.Queries.Match.Get;
-using FootballLeague.Services.Results.Match.Get;
+using FootballLeague.Services.Queries.Match.All;
+using FootballLeague.Services.Results.Match.All;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FootballLeague.Services.Handlers.Match.Get
+namespace FootballLeague.Services.Handlers.Match.All
 {
-    public class GetMatchByIdHandler : IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult>
+    public class GetAllMatchesHandler : IQueryHandlerAsync<GetAllMatchesQuery, GetAllMatchesResult>
     {
         private readonly AppDbContext dbContext;
 
-        public GetMatchByIdHandler(AppDbContext dbContext)
+        public GetAllMatchesHandler(AppDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public async Task<GetMatchByIdResult> Handle(MatchByIdQuery query)
+        public async Task<GetAllMatchesResult> Handle(GetAllMatchesQuery query)
         {
-            var match = await dbContext.Matches
-                        .Where(m => m.Id == query.Id)
+            var matches = await dbContext.Matches
                         .Select(m => new GetMatchOutputModel
                             {
                                 HomeTeamGoals = m.HomeTeamGoals,
@@ -31,9 +30,10 @@ namespace FootballLeague.Services.Handlers.Match.Get
                                 HomeTeamId = m.HomeTeamId,
                                 AwayTeamId = m.AwayTeamId
                             })
-                        .FirstOrDefaultAsync();
+                        .OrderByDescending(m => m.Start)
+                        .ToListAsync();
 
-            return new GetMatchByIdResult(match);
+            return new GetAllMatchesResult(matches);
         }
     }
 }

@@ -5,10 +5,10 @@ namespace FootballLeague.Services.Results.Match.Get
 {
     public class GetMatchByIdResult : IResult
     {
-        public GetMatchByIdResult(GetMatchOutputModel team)
+        public GetMatchByIdResult(GetMatchOutputModel match)
         {
             IsSuccessful = true;
-            Team = team;
+            Match = match;
         }
 
         public GetMatchByIdResult(string errorMessage)
@@ -21,6 +21,6 @@ namespace FootballLeague.Services.Results.Match.Get
 
         public string ErrorMessage { get; }
 
-        public GetMatchOutputModel Team { get; }
+        public GetMatchOutputModel Match { get; }
     }
 }

@@ -4,11 +4,14 @@ using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Match.Create;
 using FootballLeague.Services.Commands.Match.Delete;
 using FootballLeague.Services.Commands.Match.Update;
+using FootballLeague.Services.Handlers.Match.All;
 using FootballLeague.Services.Handlers.Match.Create;
 using FootballLeague.Services.Handlers.Match.Delete;
 using FootballLeague.Services.Handlers.Match.Get;
 using FootballLeague.Services.Handlers.Match.Update;
+using FootballLeague.Services.Queries.Match.All;
 using FootballLeague.Services.Queries.Match.Get;
+using FootballLeague.Services.Results.Match.All;
 using FootballLeague.Services.Results.Match.Create;
 using FootballLeague.Services.Results.Match.Delete;
 using FootballLeague.Services.Results.Match.Get;
@@ -61,6 +64,10 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Register<IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult>, GetMatchByIdHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult>, MatchByIdQueryValidationHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<MatchByIdQuery, GetMatchByIdResult>, GetMatchByIdErrorHandler>(Lifestyle.Scoped);
+
+            //ALL
+            container.Register<IQueryHandlerAsync<GetAllMatchesQuery, GetAllMatchesResult>, GetAllMatchesHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<IQueryHandlerAsync<GetAllMatchesQuery, GetAllMatchesResult>, GetAllMatchesErrorHandler>(Lifestyle.Scoped);
         }
     }
 }

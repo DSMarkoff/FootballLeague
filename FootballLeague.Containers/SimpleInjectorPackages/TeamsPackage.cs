@@ -4,11 +4,14 @@ using FootballLeague.Contracts.Handlers;
 using FootballLeague.Services.Commands.Team.Create;
 using FootballLeague.Services.Commands.Team.Delete;
 using FootballLeague.Services.Commands.Team.Update;
+using FootballLeague.Services.Handlers.Team.All;
 using FootballLeague.Services.Handlers.Team.Create;
 using FootballLeague.Services.Handlers.Team.Delete;
 using FootballLeague.Services.Handlers.Team.Get;
 using FootballLeague.Services.Handlers.Team.Update;
+using FootballLeague.Services.Queries.Team.All;
 using FootballLeague.Services.Queries.Team.Get;
+using FootballLeague.Services.Results.Team.All;
 using FootballLeague.Services.Results.Team.Create;
 using FootballLeague.Services.Results.Team.Delete;
 using FootballLeague.Services.Results.Team.Get;
@@ -55,6 +58,10 @@ namespace FootballLeague.Containers.SimpleInjectorPackages
             container.Register<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, GetTeamByIdHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, TeamByIdQueryValidationHandler>(Lifestyle.Scoped);
             container.RegisterDecorator<IQueryHandlerAsync<TeamByIdQuery, GetTeamByIdResult>, GetTeamByIdErrorHandler>(Lifestyle.Scoped);
+
+            //ALL
+            container.Register<IQueryHandlerAsync<GetAllTeamsQuery, GetAllTeamsResult>, GetAllTeamsHandler>(Lifestyle.Scoped);
+            container.RegisterDecorator<IQueryHandlerAsync<GetAllTeamsQuery, GetAllTeamsResult>, GetAllTeamsErrorHandler>(Lifestyle.Scoped);
         }
 
         private void RegisterCommonHandlers(Container container)
